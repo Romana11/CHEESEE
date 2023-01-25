@@ -1,0 +1,99 @@
+﻿<Window x:Class="CHEESEE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CHEESEE"
+        mc:Ignorable="d"
+        Title="Акула Фабрика" Height="700" Width="1200">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="850*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="53*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <DockPanel>
+
+            <TextBlock Text="Поиск" DockPanel.Dock="Top" Background="LightCyan" />
+            <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
+            <ListView x:Name="listSavod" ItemsSource="{Binding savods}"  SelectedItem="{Binding Selected}" Margin="15,10,5,10"  >
+            <ListView.View >
+                <GridView>
+
+                    <GridViewColumn Header="Названия принтера" Width="150" DisplayMemberBinding="{Binding Print}"/>
+                    <GridViewColumn Header="Запчасти" Width="230" DisplayMemberBinding="{Binding SpaceParts}"/>
+                    <GridViewColumn Header="Новые картриджи" Width="250" DisplayMemberBinding="{Binding NewCartridges}"/>
+                    <GridViewColumn Header="Заправка" Width="100" DisplayMemberBinding="{Binding Refueling}" />
+                    <GridViewColumn Header="Кабинет" Width="100" DisplayMemberBinding="{Binding Cabinet}" />
+                    <GridViewColumn Header="Цена" Width="100" DisplayMemberBinding="{Binding Price}" />
+
+
+
+                </GridView>
+
+            </ListView.View>
+         </ListView>
+        </DockPanel>
+        <StackPanel Grid.Column="1" >
+
+
+
+            <Button x:Name="Applications"  HorizontalAlignment="Center" Content="Заявки" Background="LightGoldenrodYellow"  Width="130" Height="20"
+                     Click="Button_Click1"/>
+
+            <Button x:Name="Dobav"  HorizontalAlignment="Center" Content="Добавить" Background="LightGreen" Width="130" Height="20"
+                    Command="{Binding GipleCommand}" Click="Button_Click2"/>
+
+            <Button x:Name="Del" HorizontalAlignment="Center" Content="Удалить" Background="LightPink" Width="130" Height="20"
+                     
+                     Click="Button_Click3"/>
+
+
+
+
+
+
+            <StackPanel DataContext="{Binding Selected}" Visibility="Visible">
+                <TextBlock Text="Редактирование" Background="LightSkyBlue"/>
+                <TextBlock Text="Названия принтера"/>
+                <TextBox  Text="{Binding Path=Print}"/>
+                <TextBlock Text="Заправка"/>
+                <TextBox  Text="{Binding Path=Refueling}"/>
+                <TextBlock Text="Запчасти"/>
+                <TextBox  Text="{Binding Path=SpaceParts}"/>
+                <TextBlock Text="Новые катриджи"/>
+                <TextBox  Text="{Binding Path=NewCartridges}"/>
+                <TextBlock Text="Цена"/>
+                <TextBox  Text="{Binding Path=Price}"/>
+                <Button x:Name="Repair" HorizontalAlignment="Center" Content="Ремонт" Background="LightSalmon" Width="130" Height="20"
+                    Command="{Binding TipleCommand}"/>
+
+
+            </StackPanel>
+
+            <StackPanel  Visibility="{Binding kreating}">
+                <TextBlock Text="Добавление" Background="LightSkyBlue"/>
+                <TextBlock Text="Названия принтера"/>
+                <TextBox  Text="{Binding Path=Sel.Print}"/>
+                <TextBlock Text="Заправка"/>
+                <TextBox  Text="{Binding Path=Sel.Refueling}"/>
+                <TextBlock Text="Запчасти"/>
+                <TextBox  Text="{Binding Path=Sel.SpaceParts}"/>
+                <TextBlock Text="Новые катриджи"/>
+                <TextBox  Text="{Binding Path=Sel.NewCartridges}"/>
+                <TextBlock Text="Кабинет"/>
+                <TextBox  Text="{Binding Path=Sel.Cabinet}"/>
+                <TextBlock Text="Цена"/>
+                <TextBox  Text="{Binding Path=Sel.Price}"/>
+                <Button x:Name="Add" HorizontalAlignment="Center" Content="Добавить" Background="LightGreen" Width="130" Height="20" Click="Dobav_Click"
+                    Command="{Binding PipleCommand}"/>
+
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</Window>
