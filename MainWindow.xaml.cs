@@ -75,18 +75,17 @@ namespace CHEESEE
                () => {
                    savods.Add(new Savods { Print = sel.Print, Refueling = sel.Refueling, SpaceParts = sel.SpaceParts, NewCartridges = sel.NewCartridges, Cabinet = sel.Cabinet, Price = sel.Price });
                   
-                   MessageBox.Show("Добавился");
                    kreating = Visibility.Hidden;
                    Fill(nameof(savods));
                });
 
 
 
-            savods.Add(new Savods { Print = "Canon голубой", SpaceParts = "отсек для бумаги, печаталка, тонер б/у", Refueling = 70, NewCartridges = "Тонер-картридж голубой Canon C-EXV54C", Cabinet = 1, Price= 10000});
-            savods.Add(new Savods { Print = "Canon зелёный", SpaceParts = "отсек для бумаги, печаталка, тонер б/у", Refueling = 75, NewCartridges = "Тонер-картридж зелёный Canon C-EXV14", Cabinet = 6, Price = 9000 });
-            savods.Add(new Savods { Print = "Pantum", SpaceParts = "отсек для бумаги, печаталка, тонер б/у", Refueling = 80, NewCartridges = "Заправочный комплект Pantum TN-420H", Cabinet = 306, Price = 8000 });
-            savods.Add(new Savods { Print = "HP", SpaceParts = "отсек для бумаги, печаталка, тонер б/у", Refueling = 85, NewCartridges = "Тонер HP CE505A", Cabinet = 4, Price = 7000 });
-            savods.Add(new Savods { Print = "Sumsung", SpaceParts = "отсек для бумаги, печаталка, тонер б/у", Refueling = 90, NewCartridges = "Тонер Sumsung SCX4200", Cabinet = 3, Price = 6000 });
+            savods.Add(new Savods { Print = "Canon голубой", SpaceParts = "отсек для бумаги", Refueling = 70, NewCartridges = "Тонер-картридж голубой Canon C-EXV54C", Cabinet = 1, Price= 10000});
+            savods.Add(new Savods { Print = "Canon зелёный", SpaceParts = "отсек для бумаги", Refueling = 75, NewCartridges = "Тонер-картридж зелёный Canon C-EXV14", Cabinet = 6, Price = 9000 });
+            savods.Add(new Savods { Print = "Pantum", SpaceParts = "отсек для бумаги", Refueling = 80, NewCartridges = "Заправочный комплект Pantum TN-420H", Cabinet = 306, Price = 8000 });
+            savods.Add(new Savods { Print = "HP", SpaceParts = "отсек для бумаги", Refueling = 85, NewCartridges = "Тонер HP CE505A", Cabinet = 4, Price = 7000 });
+            savods.Add(new Savods { Print = "Sumsung", SpaceParts = "отсек для бумаги", Refueling = 90, NewCartridges = "Тонер Sumsung SCX4200", Cabinet = 3, Price = 6000 });
             listSavod.ItemsSource = savods;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listSavod.ItemsSource);
@@ -94,6 +93,7 @@ namespace CHEESEE
 
 
         }
+        //Поиск
         private bool UserFilter(object item)
 		{
             if (String.IsNullOrEmpty(txtFilter.Text))
@@ -103,10 +103,9 @@ namespace CHEESEE
                 return ((item as Savods).Print.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
             if (String.IsNullOrEmpty(txtFilter.Text))
-
                 return ((item as Savods).SpaceParts.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
-            else
+            else 
                 return ((item as Savods).NewCartridges.IndexOf(txtFilter.Text, StringComparison.OrdinalIgnoreCase) >= 0);
 
             
@@ -141,8 +140,6 @@ namespace CHEESEE
 
         private void Button_Click3(object sender, RoutedEventArgs a)
         {
-            //listSavod.Items.Remove();
-
             savods.Remove(Selected);
         }
 
@@ -152,25 +149,6 @@ namespace CHEESEE
         {
 
         }
-
-        //private RelayCommand removeCommand;
-        //public RelayCommand RemoveCommand
-        //{
-        //    get
-        //    {
-        //        return removeCommand ??
-        //            (removeCommand = new RelayCommand(obj =>
-        //            {
-        //                Phone Savods = obj as Savods;
-        //                if (Savods != null)
-        //                {
-        //                    Savods.Remove(Savods);
-        //                }
-        //            },
-        //            (obj) => Savods.Count > 0));
-        //    }
-        //}
-
 
     }
 }

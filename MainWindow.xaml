@@ -19,7 +19,7 @@
 
             <TextBlock Text="Поиск" DockPanel.Dock="Top" Background="LightCyan" />
             <TextBox DockPanel.Dock="Top" Margin="0,0,0,10" Name="txtFilter" TextChanged="txtFilter_TextChanged" />
-            <ListView x:Name="listSavod" ItemsSource="{Binding savods}"  SelectedItem="{Binding Selected}" Margin="15,10,5,10"  >
+            <ListView x:Name="listSavod" ItemsSource="{Binding savods}"  SelectedItem="{Binding Selected}" Margin="15,10,5,10" >
             <ListView.View >
                 <GridView>
 
@@ -62,8 +62,12 @@
                 <TextBox  Text="{Binding Path=Print}"/>
                 <TextBlock Text="Заправка"/>
                 <TextBox  Text="{Binding Path=Refueling}"/>
-                <TextBlock Text="Запчасти"/>
-                <TextBox  Text="{Binding Path=SpaceParts}"/>
+                <ComboBox>
+                    <TextBlock Text="Запчасти"/>
+                    <TextBox Text="{Binding Path=SpaceParts}"/>
+                </ComboBox>
+                
+                
                 <TextBlock Text="Новые катриджи"/>
                 <TextBox  Text="{Binding Path=NewCartridges}"/>
                 <TextBlock Text="Цена"/>
